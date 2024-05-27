@@ -1,0 +1,62 @@
+<template>
+
+  <article class="slds-card sticky">
+    <div class="slds-page-header slds-grid slds-p-around_large">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <lightning-icon icon-name="standard:home" alternative-text="Property" size="x-large"></lightning-icon>
+        </div>
+
+        <h1 class="slds-text-heading_medium slds-text-heading_bold">{props.TITLE_CATALOG_SEEDING_DATA_WIZARD}</h1>
+      </header>
+    </div>
+  </article>
+  
+  <div class="slds-align_absolute-center slds-p-top_large">
+    <section
+      role="dialog"
+      tabindex="-1"
+      style="width: 50%; height: 280px"
+      aria-labelledby="modal-heading-01"
+      aria-modal="true"
+    >
+      <div class="custom-spinner">
+        <div class="slds-modal__header">
+          <h2 class="slds-text-heading_medium slds-hyphenate">
+            <b>Data Seeding with mutiple sheet Tabs</b>
+          </h2>
+        </div>
+
+        <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+          
+          <lightning-input
+            type="file"
+            label="Select File"
+            name="fileUploader"
+            accept={props.acceptedFormats}
+            onchange={handleSelectedFiles}
+            class="slds-var-m-left_medium"
+          >
+          </lightning-input>
+          <div class="slds-var-m-left_medium slds-text-title_bold" if:true={state.selectedFiles.length}>
+            {selectedFileName}
+          </div>
+          <br /><br />
+        </div>
+        <div class="slds-modal__footer">
+          <lightning-button
+            variant="brand"
+            label="Start Seeding"
+            title="Start Seeding"
+            onclick={startSeedingProcess}
+            disabled={state.isDisableStartSeedingButton}
+            class="slds-var-m-left_x-small"
+            data-testid="startSeedingButton"
+          ></lightning-button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <br/>
+  <br/>
+</template>
